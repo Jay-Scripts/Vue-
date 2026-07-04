@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <header>Hi</header>
+    <div id="app">
+      <!-- text interpolation syntax  = {{name}} -->
+      <main>Hi {{name}}!</main>
+    </div>
+    <footer>This iis the footer</footer>
+  </body>
+  <script>
+    // Extract createApp and ref from the Vue object.
+    const { createApp, ref } = Vue;
+
+    // Create a new Vue application.
+    createApp({
+      // Composition API setup function.
+      setup() {
+        // Create a reactive variable named "name".
+        const name = ref("Jay");
+
+        // Return variables that should be accessible in the HTML template.
+        return { name };
+      },
+    })
+      // Mount the Vue app to the element with id="app".
+      .mount("#app");
+  </script>
+</html>
