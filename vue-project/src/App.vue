@@ -1,23 +1,61 @@
-<script setup lang="ts">
+<script setup>
 import { ref } from "vue";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import Test from "@/components/pages/Test.vue";
-const isBtnDisabled = ref(true);
-const author = ref("https://www.facebook.com/");
+const facts = ref([
+  {
+    id: "1",
+    adjective: "Lightweight",
+    description:
+      "I am incredibly small and fast! My core library is only around 30KB, so I won't slow you down.",
+  },
+  {
+    id: "2",
+    adjective: "Approachable",
+    description:
+      "Easy to learn and use, even for beginners. I have a gentle learning curve, clear documentation, and a supportive community.",
+  },
+  {
+    id: "3",
+    adjective: "Versatile",
+    description:
+      "I can handle everything from simple interactive elements to complex single-page applications. I'm great for small projects and large-scale applications alike.",
+  },
+]);
+
+/*
+CHALLENGE: Bind the data from the `facts` Ref to elements in the template
+*/
 </script>
 
 <template>
-  <h1>
-    This is authored by <a v-bind:href="author"><span>data</span></a>
-  </h1>
-
-  <button
-    class="border p-5 bg-blue-100 hover:cursor-pointer disabled:cursor-not-allowed disabled:bg-gray-400"
-    :disabled="isBtnDisabled"
-  >
-    Click
-  </button>
+  <main>
+    <section v-for="fact in facts" :key="fact.id">
+      <h2>
+        I'm <span class="highlight">{{ fact.adjective }}</span>
+      </h2>
+      <p>
+        {{ fact.description }}
+      </p>
+    </section>
+  </main>
 </template>
 
-<style scoped></style>
+<style scoped>
+main {
+  margin-top: 15px;
+}
+
+section {
+  margin-top: 25px;
+}
+
+h2 {
+  font-size: 1.3rem;
+  color: #34495e;
+  margin-bottom: 3px;
+}
+
+p {
+  font-size: 0.9rem;
+  color: #555;
+}
+</style>
